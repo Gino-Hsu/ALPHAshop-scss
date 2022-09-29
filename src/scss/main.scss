@@ -82,6 +82,8 @@ input:invalid {
   --search-img: url("/public/image/icon-search@2x.png");
   --shop-img: url("/public/image/icon-shop@2x.png");
   --switchMode-img: url("/public/image/icon-toDark@2x.png");
+  --circle-bgColor: #ffffff;
+  --active-circle-bgColor: #2a2a2a;
 }
 
 [data-theme="dark"] {
@@ -90,7 +92,9 @@ input:invalid {
   --logo-img: url("/public/image/Logo-dark@2x.png");
   --search-img: url("/public/image/icon-search-dark@2x.png");
   --shop-img: url("/public/image/icon-shop-dark@2x.png");
-  --switchMode-img: url("/public/image/icon-toLight@2x.png")
+  --switchMode-img: url("/public/image/icon-toLight@2x.png");
+  --circle-bgColor: #121212;
+  --active-circle-bgColor: #333333;
 }
 
 .container {
@@ -157,11 +161,63 @@ $sizes: (
     100: 100%,
 );
 
+/* 使用@each 產出css size設定 */
 @each $prop, $abbrev in (width: w, height: h) {
   @each $num,
   $val in $sizes {
     .#{$abbrev}-#{$num} {
       #{$prop}: $val;
+    }
+  }
+}
+
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: ($spacer * 0.25),
+  2: ($spacer * 0.5),
+  3: ($spacer * 0.75),
+  4: $spacer,
+  5: ($spacer * 1.25),
+  6: ($spacer * 1.5),
+  7: ($spacer * 1.75),
+  8: ($spacer * 2)
+);
+
+/* 使用@each 產出css spacer設定 */
+@each $prop,
+$abbrev in (margin: m, padding: p) {
+
+  @each $num,
+  $val in $spacers {
+    .#{$abbrev}-#{$num} {
+      #{$prop}: $val;
+    }
+
+    .#{$abbrev}t-#{$num} {
+      #{$prop}-top: $val;
+    }
+
+    .#{$abbrev}r-#{$num} {
+      #{$prop}-right: $val;
+    }
+
+    .#{$abbrev}b-#{$num} {
+      #{$prop}-bottom: $val;
+    }
+
+    .#{$abbrev}l-#{$num} {
+      #{$prop}-left: $val;
+    }
+
+    .#{$abbrev}x-#{$num} {
+      #{$prop}-left: $val;
+      #{$prop}-right: $val;
+    }
+
+    .#{$abbrev}y-#{$num} {
+      #{$prop}-top: $val;
+      #{$prop}-bottom: $val;
     }
   }
 }
@@ -178,22 +234,46 @@ $sizes: (
   width: $width;
 }
 
+@mixin get-step-num($num) {
+  @for $i from 1 through $num {
+    &:nth-child(#{$i}) .circle::after {
+      content: "#{$i}";
+    }
+  }
+}
+
+@mixin circle-setting($width-height, $color, $background-color, $border-color, $font-size) {
+  width: $width-height;
+  height: $width-height;
+  color: $color;
+  background-color: $background-color;
+  font-size: $font-size;
+  border-color: $border-color;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* header setting */
 header {
   height: 60px;
   .navbar{
     position: relative;
     .menus {
+      width: 35%;
       a {
         @include font-setting(1rem, 500, var(--font-color));
-        margin-right: 33px;
         }
     }
     .logo {
       width: 170px;
       position: absolute;
+      top: 50%;
       left: 50%;
-      transform: translate(-50%);
+      transform: translate(-50%, -50%);
       .logo-img {
         content: var(--logo-img);
         width: 100%;
@@ -213,6 +293,62 @@ header {
       }
       .icon-mode {
         @include img-setting(var(--switchMode-img), 100%);
+      }
+    }
+  }
+}
+
+.main-container {
+  display: grid;
+  grid-template-columns: 5fr 1fr 4fr;
+  .pay-container {
+    grid-column: 1/2;
+    .stepper-title {
+      @include font-setting(2rem, 700, var(--font-color))
+    }
+    .stepper-container {
+      margin: 4rem 0;
+      position: relative;
+      .step {
+        @include get-step-num(3);
+        background-color: var(--main-background-color);
+        .circle {
+          @include circle-setting( 24px, #AFB1BD, var(--circle-bgColor), #AFB1BD, 12px);
+          margin-right: 8px;
+        }
+        .label {
+          font-size: 1rem;
+          color: #AFB1BD;
+        }
+        .progress {
+          z-index: -1;
+          position: absolute;
+          height: 1px;
+          background-color: #AFB1BD;
+          top: 50%;
+          &.progress-left {
+            left: 0;
+            right: 50%;
+          }
+          &.progress-right {
+            left: 50%;
+            right: 0;
+          }
+        }
+
+        &.active,
+        &.done {
+          .circle {
+            @include circle-setting(24px, #ffffff, var(--active-circle-bgColor), var(--active-circle-bgColor), 12px);
+          }
+          .label {
+            color: var(--font-color);
+          }
+          .progress {
+            background-color: var(--font-color);
+            border: 0.5px solid var(--font-color);
+          }
+        }
       }
     }
   }

@@ -12,7 +12,7 @@
         <nav
           class="navbar d-flex justify-content-between align-items-center h-100"
         >
-          <div class="menus">
+          <div class="menus d-flex justify-content-between align-items-center">
             <a href="">男款</a>
             <a href="">女款</a>
             <a href="">最新消息</a>
@@ -38,5 +38,173 @@
         </nav>
       </div>
     </header>
+
+    <main>
+      <div class="main-container container pt-8">
+        <section class="pay-container">
+          <div class="stepper">
+            <h3 class="stepper-title">結帳</h3>
+            <div class="stepper-container d-flex justify-content-between">
+              <div class="step active d-flex align-items-center pr-6">
+                <div class="circle"></div>
+                <div class="label">寄送地址</div>
+                <div class="progress progress-left"></div>
+              </div>
+              <div class="step d-flex align-items-center px-6">
+                <div class="circle"></div>
+                <div class="label">運送方式</div>
+                <div class="progress progress-right"></div>
+              </div>
+              <div class="step d-flex align-items-center pl-6">
+                <div class="circle"></div>
+                <div class="label">付款資訊</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pay-info">
+            <div class="form-container">
+              <form action="">
+                <div class="step-one">
+                  <h4 class="step-title">寄送地址</h4>
+                  <div class="appellation">
+                    <label for="appellation">稱謂</label>
+                    <select name="appellation" id="appellation">
+                      <option value="" style="display: none" selected>
+                        請選擇稱謂
+                      </option>
+                      <option value="man">先生</option>
+                      <option value="woman">小姐</option>
+                    </select>
+                  </div>
+                  <div class="name">
+                    <label for="name">姓名</label>
+                    <input
+                      type="text"
+                      name="name"
+                      id="name"
+                      placeholder="請輸入姓名"
+                    />
+                  </div>
+                  <div class="phone">
+                    <label for="phone">電話</label>
+                    <input
+                      type="text"
+                      name="phone"
+                      id="phone"
+                      placeholder="請輸入行動電話"
+                    />
+                  </div>
+                  <div class="email">
+                    <label for="email">Email</label>
+                    <input
+                      type="email"
+                      name="email"
+                      id="email"
+                      placeholder="請輸入電子郵件"
+                    />
+                  </div>
+                  <div class="city">
+                    <label for="city">縣市</label>
+                    <select name="city" id="city">
+                      <option value="" style="display: none" selected>
+                        請選擇縣市
+                      </option>
+                    </select>
+                  </div>
+                  <div class="address">
+                    <label for="address">地址</label>
+                    <input
+                      type="text"
+                      name="address"
+                      id="address"
+                      placeholder="請輸入地址"
+                    />
+                  </div>
+                </div>
+
+                <div class="step-two">
+                  <h4 class="step-title">運送方式</h4>
+                  <label for="standard-deliver">
+                    <input
+                      type="radio"
+                      name="deliver"
+                      id="standard-deliver"
+                      value="0"
+                    />
+                    <div class="deliver-info">
+                      <h5>標準運送</h5>
+                      <p>約 3~7 個工作天</p>
+                    </div>
+                    <div class="cost">
+                      <p>免費</p>
+                    </div>
+                  </label>
+                  <label for="dhl-deliver">
+                    <input
+                      type="radio"
+                      name="deliver"
+                      id="dhl-deliver"
+                      value="500"
+                    />
+                    <div class="deliver-info">
+                      <h5>DHL 貨運</h5>
+                      <p>48 小時內送達</p>
+                    </div>
+                    <div class="cost">
+                      <p>$500</p>
+                    </div>
+                  </label>
+                </div>
+
+                <div class="step-three">
+                  <h4 class="step-title">付款資訊</h4>
+                  <div class="card-name">
+                    <label for="card-name">持卡人姓名</label>
+                    <input
+                      type="text"
+                      name="card-name"
+                      id="card-name"
+                      placeholder="John Doe"
+                    />
+                  </div>
+                  <div class="card-number">
+                    <label for="card-number">卡號</label>
+                    <input
+                      type="text"
+                      name="card-number"
+                      id="card-number"
+                      placeholder="1111 2222 3333 4444"
+                    />
+                  </div>
+                  <div class="card-date">
+                    <label for="card-date">有效期限</label>
+                    <input
+                      type="text"
+                      name="card-date"
+                      id="card-date"
+                      placeholder="MM/YY"
+                    />
+                  </div>
+                  <div class="card-code">
+                    <label for="card-code">CVC / CCV</label>
+                    <input
+                      type="text"
+                      name="card-code"
+                      id="card-code"
+                      placeholder="123"
+                    />
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+        <section class="chart"></section>
+      </div>
+    </main>
+
+    <!-- import JS -->
+    <script src="./src/main.js"></script>
   </body>
 </html>
