@@ -95,6 +95,7 @@ input:invalid {
   --form-radioInput-background-color: #FFFFFF;
   --form-radioInput-uncheck-width: 1px;
   --form--radioInput-checked-width: 6px;
+  --divider-color: #e6e6eb;
 }
 
 [data-theme="dark"] {
@@ -116,6 +117,7 @@ input:invalid {
   --form-radioInput-background-color: #FFFFFF;
   --form-radioInput-uncheck-width: 6px;
   --form--radioInput-checked-width: 50%;
+  --divider-color: rgba(255, 255, 255, 0.2);
 }
 
 .container {
@@ -206,7 +208,11 @@ $spacers: (
   5: ($spacer * 1.25),
   6: ($spacer * 1.5),
   7: ($spacer * 1.75),
-  8: ($spacer * 2)
+  8: ($spacer * 2),
+  9: ($spacer * 2.25),
+  10: ($spacer * 2.5),
+  11: ($spacer * 2.75),
+  12: ($spacer * 3)
 );
 
 /* 使用@each 產出css spacer設定 */
@@ -379,6 +385,18 @@ header {
             border: 0.5px solid var(--font-color);
           }
         }
+        &.done {
+          .circle::after {
+            content: '';
+            display: inline-block;
+            background-image: url('../../public/image/Vector@2x.png');
+            background-repeat: no-repeat;
+            background-size: 16px;
+            background-position: center;
+            width: 16px;
+            height: 16px;
+          }
+        }
       }
     }
   }
@@ -432,7 +450,7 @@ header {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(4, 4rem);
-    gap: 30px;
+    gap: 24px 30px;
     label {
       @include font-setting(12px, 700, var(--form-font-color));
       display: block;
@@ -471,7 +489,7 @@ header {
   .step-two {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(3, 4rem);
+    grid-template-rows: repeat(4, 4rem);
     gap: 24px;
     input[type="radio"] {
       -webkit-appearance: none;
@@ -518,6 +536,61 @@ header {
         @include font-setting(12px, 400, var(--font-color));
         pointer-events: none;
       }
+    }
+  }
+
+  .step-three {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(4, 4rem);
+    gap: 24px 30px;
+    label {
+      @include font-setting(12px, 700, var(--form-font-color));
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .form-title {
+      grid-column: 1/7;
+      grid-row: 1/2;
+    }
+    .card-name {
+      grid-column: 1/5;
+      grid-row: 2/3;
+    }
+    .card-number {
+      grid-column: 1/5;
+      grid-row: 3/4;
+    }
+    .card-date {
+      grid-column: 1/4;
+      grid-row: 4/5;
+    }
+    .card-code {
+      grid-column: 4/7;
+      grid-row: 4/5;
+    }
+  }
+
+  .divider {
+    width: 100%;
+    height: 1px;
+    background-color: var(--divider-color);
+  }
+  .btn-container {
+    .btn {
+      cursor: pointer;
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+    .btn-back {
+      @include font-setting(14px, 400, var(--font-color))
+    }
+    .btn-primary {
+      @include font-setting(14px, 400, #ffffff);
+      background-color: #f67599;
+      border-radius: 8px;
+      padding: 14.5px 47.5px;
     }
   }
 }

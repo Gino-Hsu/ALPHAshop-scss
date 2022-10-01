@@ -64,8 +64,8 @@
 
           <div class="forms">
             <div class="form-container">
-              <form action="">
-                <div class="step-one d-none">
+              <form action="" class="form-part">
+                <div class="step-one part">
                   <h4 class="form-title address-tilte mt-4">寄送地址</h4>
                   <div class="appellation">
                     <label for="appellation">稱謂</label>
@@ -133,7 +133,7 @@
                   </div>
                 </div>
 
-                <div class="step-two d-none">
+                <div class="step-two part d-none">
                   <h4 class="form-title mt-4">運送方式</h4>
                   <label for="standard-deliver">
                     <input
@@ -167,7 +167,7 @@
                   </label>
                 </div>
 
-                <div class="step-three">
+                <div class="step-three part d-none">
                   <h4 class="form-title mt-4">付款資訊</h4>
                   <div class="card-name">
                     <label for="card-name">持卡人姓名</label>
@@ -206,10 +206,19 @@
                     />
                   </div>
                 </div>
+
+                <div class="divider mt-12 mb-6"></div>
+                <div
+                  class="btn-container d-flex justify-content-between align-items-center"
+                >
+                  <button class="btn btn-back"></button>
+                  <button class="btn btn-primary">下一步 &rarr;</button>
+                </div>
               </form>
             </div>
           </div>
         </section>
+
         <section class="chart"></section>
       </div>
     </main>
