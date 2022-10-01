@@ -88,6 +88,13 @@ input:invalid {
   --form-font-color: #808080;
   --form-items-color: #4a4a4a;
   --form-placeholder-font-color: #999999;
+  --form-radio-border-color: #f0f0f5;
+  --form-radio-title-color: #000000;
+  --form-radio-font-color: #000000;
+  --form-radioInput-border-color: #222222;
+  --form-radioInput-background-color: #FFFFFF;
+  --form-radioInput-uncheck-width: 1px;
+  --form--radioInput-checked-width: 6px;
 }
 
 [data-theme=dark] {
@@ -102,11 +109,22 @@ input:invalid {
   --form-font-color: rgba(255, 255, 255, 0.4);
   --form-items-color: #5e5e5e;
   --form-placeholder-font-color: rgba(255, 255, 255, 0.3);
+  --form-radio-border-color: #5e5e5e;
+  --form-radio-title-color: #ffffff;
+  --form-radio-font-color: rgba(255, 255, 255, 0.4);
+  --form-radioInput-border-color: #333333;
+  --form-radioInput-background-color: #FFFFFF;
+  --form-radioInput-uncheck-width: 6px;
+  --form--radioInput-checked-width: 50%;
 }
 
 .container {
   width: 80%;
   margin: 0 auto;
+}
+
+.d-none {
+  display: none !important;
 }
 
 .d-flex {
@@ -949,4 +967,64 @@ header .navbar .icons .icon-mode {
 .forms .step-one .address {
   grid-column: 3/7;
   grid-row: 4/5;
+}
+.forms .step-two {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 4rem);
+  gap: 24px;
+}
+.forms .step-two input[type=radio] {
+  -webkit-appearance: none;
+  margin: 0 20px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  box-shadow: inset 0 0 0 var(--form-radioInput-uncheck-width) var(--form-radioInput-border-color);
+  display: inline-block;
+  pointer-events: none;
+}
+.forms .step-two input[type=radio]:checked {
+  background-color: #ffffff;
+  box-shadow: inset 0 0 0 var(--form--radioInput-checked-width) var(--form-radioInput-border-color);
+}
+.forms .step-two label {
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--form-radio-border-color);
+  border-radius: 4px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.forms .step-two label.checked {
+  border-color: var(--form-radio-title-color);
+}
+.forms .step-two label:hover {
+  box-shadow: 0 0 5px 2px rgba(246, 117, 153, 0.4);
+}
+.forms .step-two label .deliver-info {
+  display: inline-block;
+  pointer-events: none;
+}
+.forms .step-two label .deliver-info h5 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--form-radio-title-color);
+}
+.forms .step-two label .deliver-info p {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--form-radio-font-color);
+}
+.forms .step-two label .cost {
+  position: absolute;
+  top: 13px;
+  right: 20px;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--font-color);
+  pointer-events: none;
 }/*# sourceMappingURL=main.css.map */
