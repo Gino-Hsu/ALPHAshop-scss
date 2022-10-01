@@ -1,14 +1,14 @@
 @charset "UTF-8";
 /* reset css */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap");
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
-  @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap");
   font-family: "Noto Sans TC", sans-serif;
-}
-
-* {
-  box-sizing: border-box;
 }
 
 h1,
@@ -85,6 +85,9 @@ input:invalid {
   --switchMode-img: url("/public/image/icon-toDark@2x.png");
   --circle-bgColor: #ffffff;
   --active-circle-bgColor: #2a2a2a;
+  --form-font-color: #808080;
+  --form-items-color: #4a4a4a;
+  --form-placeholder-font-color: #999999;
 }
 
 [data-theme=dark] {
@@ -96,6 +99,9 @@ input:invalid {
   --switchMode-img: url("/public/image/icon-toLight@2x.png");
   --circle-bgColor: #121212;
   --active-circle-bgColor: #333333;
+  --form-font-color: rgba(255, 255, 255, 0.4);
+  --form-items-color: #5e5e5e;
+  --form-placeholder-font-color: rgba(255, 255, 255, 0.3);
 }
 
 .container {
@@ -774,7 +780,7 @@ header .navbar .icons .icon-mode {
 
 .main-container {
   display: grid;
-  grid-template-columns: 5fr 1fr 4fr;
+  grid-template-columns: 6fr 1.5fr 5fr;
 }
 .main-container .pay-container {
   grid-column: 1/2;
@@ -785,7 +791,7 @@ header .navbar .icons .icon-mode {
   color: var(--font-color);
 }
 .main-container .pay-container .stepper-container {
-  margin: 4rem 0;
+  margin: 3rem 0;
   position: relative;
 }
 .main-container .pay-container .stepper-container .step {
@@ -848,10 +854,99 @@ header .navbar .icons .icon-mode {
   justify-content: center;
   align-items: center;
 }
-.main-container .pay-container .stepper-container .step.active .label, .main-container .pay-container .stepper-container .step.done .label {
+.main-container .pay-container .stepper-container .step.active .progress-label, .main-container .pay-container .stepper-container .step.done .progress-label {
   color: var(--font-color);
 }
 .main-container .pay-container .stepper-container .step.active .progress, .main-container .pay-container .stepper-container .step.done .progress {
   background-color: var(--font-color);
   border: 0.5px solid var(--font-color);
+}
+
+.forms .form-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--font-color);
+}
+.forms input:not([type=radio]),
+.forms select {
+  -webkit-appearance: none;
+  border: 1px solid var(--form-items-color);
+  border-radius: 4px;
+  background-color: transparent;
+  padding-left: 18px;
+  width: 100%;
+  height: 40px;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--font-color);
+}
+.forms input:not([type=radio]):invalid,
+.forms select:invalid {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--form-placeholder-font-color);
+}
+.forms input:not([type=radio]):hover, .forms input:not([type=radio]):focus,
+.forms select:hover,
+.forms select:focus {
+  box-shadow: 0 0 5px 2px rgba(246, 117, 153, 0.4);
+}
+.forms select {
+  cursor: pointer;
+}
+.forms .select-wrapper {
+  position: relative;
+  z-index: 0;
+}
+.forms .select-wrapper::after {
+  content: "";
+  border-style: solid;
+  border-width: 5px 4.5px 0 4.5px;
+  border-color: var(--form-items-color) transparent transparent transparent;
+  position: absolute;
+  top: 50%;
+  right: 18px;
+  transform: translateY(-50%);
+  z-index: -1;
+}
+.forms .step-one {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(4, 4rem);
+  gap: 30px;
+}
+.forms .step-one label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--form-font-color);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.forms .step-one .address-tilte {
+  grid-column: 1/7;
+  grid-row: 1/2;
+}
+.forms .step-one .appellation {
+  grid-column: 1/3;
+  grid-row: 2/3;
+}
+.forms .step-one .name {
+  grid-column: 3/7;
+  grid-row: 2/3;
+}
+.forms .step-one .phone {
+  grid-column: 1/4;
+  grid-row: 3/4;
+}
+.forms .step-one .email {
+  grid-column: 4/7;
+  grid-row: 3/4;
+}
+.forms .step-one .city {
+  grid-column: 1/3;
+  grid-row: 4/5;
+}
+.forms .step-one .address {
+  grid-column: 3/7;
+  grid-row: 4/5;
 }/*# sourceMappingURL=main.css.map */
