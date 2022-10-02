@@ -100,6 +100,11 @@ input:invalid {
   --cart-bgColor: #ffffff;
   --cart-btn-bgColor: #f0f0f5;
   --cart-btn-fontColor: #000000;
+  --footer-bgColor: #e5e5e5;
+  --footer-font-color: #808080;
+  --facebook-icon: url("/public/image/facebook@2x.png");
+  --instagram-icon: url("/public/image/instagram@2x.png");
+  --whatsapp-icon: url("/public/image/whatsapp@2x.png");
 }
 
 [data-theme="dark"] {
@@ -126,6 +131,10 @@ input:invalid {
   --cart-bgColor: #383838;
   --cart-btn-bgColor: #808080;
   --cart-btn-fontColor: #333333;
+  --footer-bgColor: #333333;
+  --footer-font-color: rgba(255, 255, 255, 0.6);
+  --facebook-icon: url("/public/image/facebook-dark@2x.png");
+  --instagram-icon: url("/public/image/instagram-dark@2x.png"); --whatsapp-icon: url("/public/image/whatsapp-dark@2x.png");
 }
 
 .container {
@@ -668,6 +677,55 @@ header {
         }
         .cost {
           @include font-setting(14px, 700, var(--font-color));
+        }
+      }
+    }
+  }
+}
+
+footer {
+  margin-top: 120px;
+  padding: 4rem 0;
+  width: 100%;
+  background-color: var(--footer-bgColor);
+  .footer-container {
+    .logo {
+      width: 170px;
+      .logo-img {
+        content: var(--logo-img);
+        width: 100%;
+      }
+    }
+    .info {
+      width: 75%;
+      h5 {
+        @include font-setting(1.5rem, 700, var(--font-color));
+        margin-bottom: 1.5rem;
+      }
+      a,
+      p {
+        @include font-setting(1rem, 400, var(--footer-font-color));
+      }
+
+      .icons {
+        .icon {
+          display: inline-block;
+          width: 24px;
+          height: 24px;
+          margin: 0.5rem 1rem 0 0;
+          overflow: hidden;
+          .icon-img {
+            width: 100%;
+          }
+        }
+        .facebook-img {
+          content: var(--facebook-icon);
+        }
+        .instagram-img {
+          content: var(--instagram-icon);
+        }
+        .whatsapp-img {
+          content: var(--whatsapp-icon);
         }
       }
     }
