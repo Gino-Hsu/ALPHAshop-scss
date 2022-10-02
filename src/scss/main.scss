@@ -92,10 +92,14 @@ input:invalid {
   --form-radio-title-color: #000000;
   --form-radio-font-color: #000000;
   --form-radioInput-border-color: #222222;
-  --form-radioInput-background-color: #FFFFFF;
+  --form-radioInput-background-color: #ffffff;
   --form-radioInput-uncheck-width: 1px;
   --form--radioInput-checked-width: 6px;
   --divider-color: #e6e6eb;
+  --cart-border-color: #f0f0f5;
+  --cart-bgColor: #ffffff;
+  --cart-btn-bgColor: #f0f0f5;
+  --cart-btn-fontColor: #000000;
 }
 
 [data-theme="dark"] {
@@ -118,6 +122,10 @@ input:invalid {
   --form-radioInput-uncheck-width: 6px;
   --form--radioInput-checked-width: 50%;
   --divider-color: rgba(255, 255, 255, 0.2);
+  --cart-border-color: rgba(255, 255, 255, 0.2);
+  --cart-bgColor: #383838;
+  --cart-btn-bgColor: #808080;
+  --cart-btn-fontColor: #333333;
 }
 
 .container {
@@ -337,65 +345,66 @@ header {
 .main-container {
   display: grid;
   grid-template-columns: 6fr 1.5fr 5fr;
-  .pay-container {
-    grid-column: 1/2;
-    .stepper-title {
-      @include font-setting(2rem, 700, var(--font-color))
-    }
-    .stepper-container {
-      margin: 3rem 0;
-      position: relative;
-      .step {
-        @include get-step-num(3);
-        background-color: var(--main-background-color);
-        .circle {
-          @include circle-setting( 24px, #AFB1BD, var(--circle-bgColor), #AFB1BD, 12px);
-          margin-right: 8px;
+}
+
+.pay-container {
+  grid-column: 1/2;
+  .stepper-title {
+    @include font-setting(2rem, 700, var(--font-color))
+  }
+  .stepper-container {
+    margin: 3rem 0;
+    position: relative;
+    .step {
+      @include get-step-num(3);
+      background-color: var(--main-background-color);
+      .circle {
+        @include circle-setting( 24px, #AFB1BD, var(--circle-bgColor), #AFB1BD, 12px);
+        margin-right: 8px;
+      }
+      .label {
+        font-size: 1rem;
+        color: #AFB1BD;
+      }
+      .progress {
+        z-index: -1;
+        position: absolute;
+        height: 1px;
+        background-color: #AFB1BD;
+        top: 50%;
+        &.progress-left {
+          left: 0;
+          right: 50%;
         }
-        .label {
-          font-size: 1rem;
-          color: #AFB1BD;
+        &.progress-right {
+          left: 50%;
+          right: 0;
+        }
+      }
+
+      &.active,
+      &.done {
+        .circle {
+          @include circle-setting(24px, #ffffff, var(--active-circle-bgColor), var(--active-circle-bgColor), 12px);
+        }
+        .progress-label {
+          color: var(--font-color);
         }
         .progress {
-          z-index: -1;
-          position: absolute;
-          height: 1px;
-          background-color: #AFB1BD;
-          top: 50%;
-          &.progress-left {
-            left: 0;
-            right: 50%;
-          }
-          &.progress-right {
-            left: 50%;
-            right: 0;
-          }
+          background-color: var(--font-color);
+          border: 0.5px solid var(--font-color);
         }
-
-        &.active,
-        &.done {
-          .circle {
-            @include circle-setting(24px, #ffffff, var(--active-circle-bgColor), var(--active-circle-bgColor), 12px);
-          }
-          .progress-label {
-            color: var(--font-color);
-          }
-          .progress {
-            background-color: var(--font-color);
-            border: 0.5px solid var(--font-color);
-          }
-        }
-        &.done {
-          .circle::after {
-            content: '';
-            display: inline-block;
-            background-image: url('../../public/image/Vector@2x.png');
-            background-repeat: no-repeat;
-            background-size: 16px;
-            background-position: center;
-            width: 16px;
-            height: 16px;
-          }
+      }
+      &.done {
+        .circle::after {
+          content: '';
+          display: inline-block;
+          background-image: url('../../public/image/Vector@2x.png');
+          background-repeat: no-repeat;
+          background-size: 16px;
+          background-position: center;
+          width: 16px;
+          height: 16px;
         }
       }
     }
@@ -518,6 +527,7 @@ header {
       }
       &:hover {
         box-shadow: 0 0 5px 2px rgba(#f67599, 0.4);
+        border-color: var(--form-radio-title-color);
       }
       .deliver-info {
         display: inline-block;
@@ -591,6 +601,75 @@ header {
       background-color: #f67599;
       border-radius: 8px;
       padding: 14.5px 47.5px;
+    }
+  }
+}
+
+.cart-container {
+  grid-column: 3/4;
+  .cart {
+    margin-top: 5rem;
+    padding: 2rem 1.5rem;
+    border: 1px solid var(--cart-border-color);
+    border-radius: 8px;
+    .cart-tilte {
+      @include font-setting(18px, 700, var(--font-color));
+    }
+    .products {
+      .product {
+        margin: 2rem 0;
+        display: flex;
+        justify-content: space-between;
+        .product-image {
+          margin-right: 21px;
+          width: 100px;
+          height: 100px;
+          border-radius: 4px;
+          img {
+            width: 100%;
+          }
+        }
+        .product-data {
+          width: 70%;
+          display: flex;
+          justify-content: space-between;
+          .name {
+            @include font-setting(1rem, 400, var(--font-color));
+          }
+          .count-container {
+            margin-top: 18px;
+            .count {
+              padding: 0 1.5rem;
+              @include font-setting(14px, 500, var(--font-color));
+              line-height: 27px;
+            }
+            .btn {
+              width: 27px;
+              height: 27px;
+              background-color: var(--cart-btn-bgColor);
+              border-radius: 50%;
+              @include font-setting(1rem, 700, var(--cart-btn-fontColor));
+            }
+          }
+          .product-cost {
+            @include font-setting(1rem, 700, var(--font-color));
+          }
+        }
+      }
+    }
+
+    .cost-container {
+      .type-group {
+        border-top: 1px solid var(--cart-border-color);
+        padding: 1rem 0;
+        margin-bottom: 1rem;
+        .cost-name {
+          @include font-setting(14px, 400, var(--font-color));
+        }
+        .cost {
+          @include font-setting(14px, 700, var(--font-color));
+        }
+      }
     }
   }
 }

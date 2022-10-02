@@ -1,3 +1,21 @@
+// set data
+const products = {
+  product_01: {
+    id: 1,
+    name: '破壞補丁修身牛仔褲',
+    price: 3999,
+    quantity: 15,
+    image: './public/image/product_01@2x.png'
+  },
+  product_02: {
+    id: 2,
+    name: '刷色直筒牛仔褲',
+    price: 1299,
+    quanty: 8,
+    image: './public/image/product_02@2x.png'
+  }
+}
+
 const stepTwo = document.querySelector('.step-two')
 const radioChecked = document.querySelector('INPUT[type = "radio"]:checked')
 const formPart = document.querySelector('.form-part')
