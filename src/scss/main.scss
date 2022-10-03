@@ -105,6 +105,8 @@ input:invalid {
   --facebook-icon: url("/public/image/facebook@2x.png");
   --instagram-icon: url("/public/image/instagram@2x.png");
   --whatsapp-icon: url("/public/image/whatsapp@2x.png");
+  --hamburger-image: url("/public/image/hamburger@2x.png");
+  --menu-border-color: rgba(42, 42, 42, 0.1);
 }
 
 [data-theme="dark"] {
@@ -124,8 +126,8 @@ input:invalid {
   --form-radio-font-color: rgba(255, 255, 255, 0.4);
   --form-radioInput-border-color: #333333;
   --form-radioInput-background-color: #FFFFFF;
-  --form-radioInput-uncheck-width: 6px;
-  --form--radioInput-checked-width: 50%;
+  --form-radioInput-uncheck-width: 12px;
+  --form--radioInput-checked-width: 6px;
   --divider-color: rgba(255, 255, 255, 0.2);
   --cart-border-color: rgba(255, 255, 255, 0.2);
   --cart-bgColor: #383838;
@@ -135,6 +137,8 @@ input:invalid {
   --footer-font-color: rgba(255, 255, 255, 0.6);
   --facebook-icon: url("/public/image/facebook-dark@2x.png");
   --instagram-icon: url("/public/image/instagram-dark@2x.png"); --whatsapp-icon: url("/public/image/whatsapp-dark@2x.png");
+  --hamburger-image: url("/public/image/hamburger-dark@2x.png");
+  --menu-border-color: rgba(109, 109, 109, 0.4);
 }
 
 .container {
@@ -311,6 +315,10 @@ $abbrev in (margin: m, padding: p) {
 }
 
 /* header setting */
+body {
+  background-color: var(--main-background-color);
+}
+
 header {
   height: 60px;
   .navbar{
@@ -336,6 +344,7 @@ header {
       .icon {
         width: 24px;
         margin-left: 31px;
+        cursor: pointer;
       }
 
       .icon-search {
@@ -360,8 +369,11 @@ header {
     top: 20px;
     display: none;
     cursor: pointer;
-    :hover {
+    &:hover {
       transform: scale(0.9);
+    }
+    img {
+      content: var(--hamburger-image);
     }
   }
   .checkbox {
@@ -389,14 +401,14 @@ header {
         @include circle-setting( 24px, #AFB1BD, var(--circle-bgColor), #AFB1BD, 12px);
         margin-right: 8px;
       }
-      .label {
+      .progress-label {
         font-size: 1rem;
         color: #AFB1BD;
       }
       .progress {
         z-index: -1;
         position: absolute;
-        height: 1px;
+        height: 2px;
         background-color: #AFB1BD;
         top: 50%;
         &.progress-left {
@@ -941,7 +953,7 @@ footer {
           a {
             padding: 24px 0;
             width: 100%;
-            border-bottom: 1px solid rgba(42, 42, 42, 0.1);
+            border-bottom: 1px solid var(--menu-border-color);
             text-align: center;
           }
         }

@@ -89,3 +89,16 @@ function addBorderStyle(e) {
 findCheckedRadio()
 stepTwo.addEventListener('click', addBorderStyle)
 btnContainer.addEventListener('click', handleBtnControlClicked)
+
+// toggle darkMode or lightMode
+const toggleMode = document.querySelector('#toggle-mode-checkbox')
+
+function modeToggleHandler(event) {
+  if (event.target.checked) {
+    document.documentElement.setAttribute("data-theme", "dark");
+  } else {
+    document.documentElement.setAttribute("data-theme", "light");
+  }
+}
+
+toggleMode.addEventListener('change', modeToggleHandler)
