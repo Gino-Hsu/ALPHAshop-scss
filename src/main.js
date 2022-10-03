@@ -56,8 +56,10 @@ function handleBtnControlClicked(e) {
 function setBtnDisabled() {
   if (step === 0) {
     backBtn.innerHTML = ''
+    backBtn.setAttribute('disabled', 'disabled')
   } else {
     backBtn.innerHTML = '&larr; 上一步'
+    backBtn.removeAttribute('disabled')
   }
   if (step === 2) {
     primaryBtn.innerHTML = '確認下單'
