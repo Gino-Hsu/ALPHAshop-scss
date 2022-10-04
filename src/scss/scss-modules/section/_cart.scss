@@ -1,0 +1,84 @@
+@use '../mixin';
+@use '../var';
+
+.cart-container {
+  grid-column: 3/4;
+
+  .cart {
+    margin-top: 5rem;
+    padding: 2rem 1.5rem;
+    border: 1px solid var(--cart-border-color);
+    border-radius: 8px;
+
+    .cart-tilte {
+      @include mixin.font-setting(18px, 700, var(--font-color));
+    }
+
+    .products {
+      .product {
+        margin: 2rem 0;
+        display: flex;
+        justify-content: space-between;
+
+        .product-image {
+          margin-right: 21px;
+          width: 100px;
+          height: 100px;
+          border-radius: 4px;
+
+          img {
+            width: 100%;
+          }
+        }
+
+        .product-data {
+          width: 70%;
+          display: flex;
+          justify-content: space-between;
+
+          .name {
+            @include mixin.font-setting(1rem, 400, var(--font-color));
+          }
+
+          .count-container {
+            margin-top: 18px;
+
+            .count {
+              padding: 0 1.5rem;
+              @include mixin.font-setting(14px, 500, var(--font-color));
+              line-height: 27px;
+            }
+
+            .btn {
+              width: 27px;
+              height: 27px;
+              background-color: var(--cart-btn-bgColor);
+              border-radius: 50%;
+              @include mixin.font-setting(1rem, 700, var(--cart-btn-fontColor));
+            }
+          }
+
+          .product-cost {
+            @include mixin.font-setting(1rem, 700, var(--font-color));
+          }
+        }
+      }
+    }
+
+    .cost-container {
+      .type-group {
+        border-top: 1px solid var(--cart-border-color);
+        padding: 1rem 0;
+        margin-bottom: 1rem;
+
+        .cost-name {
+          @include mixin.font-setting(14px, 400, var(--font-color));
+        }
+
+        .cost {
+          @include mixin.font-setting(14px, 700, var(--font-color));
+        }
+      }
+    }
+  }
+}

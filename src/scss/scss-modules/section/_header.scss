@@ -1,0 +1,76 @@
+@use '../mixin';
+@use '../var';
+
+header {
+  height: 60px;
+
+  .navbar {
+    position: relative;
+
+    .menus {
+      width: 35%;
+
+      a {
+        @include mixin.font-setting(1rem, 500, var(--font-color));
+      }
+    }
+
+    .logo {
+      width: 170px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      .logo-img {
+        content: var(--logo-img);
+        width: 100%;
+      }
+    }
+
+    .icons {
+      .icon {
+        width: 24px;
+        margin-left: 31px;
+        cursor: pointer;
+      }
+
+      .icon-search {
+        @include mixin.img-setting(var(--search-img), 100%);
+      }
+
+      .icon-shop {
+        @include mixin.img-setting(var(--shop-img), 100%);
+      }
+
+      .icon-mode {
+        @include mixin.img-setting(var(--switchMode-img), 100%);
+      }
+    }
+  }
+
+  /* hamburger setting */
+  .toggle-show {
+    display: none;
+  }
+
+  .hamburger {
+    width: 20px;
+    position: absolute;
+    top: 20px;
+    display: none;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(0.9);
+    }
+
+    img {
+      content: var(--hamburger-image);
+    }
+  }
+
+  .checkbox {
+    display: none;
+  }
+}

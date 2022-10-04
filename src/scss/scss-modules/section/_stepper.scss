@@ -1,0 +1,77 @@
+@use '../mixin';
+@use '../var';
+
+.pay-container {
+  grid-column: 1/2;
+
+  .stepper-title {
+    @include mixin.font-setting(2rem, 700, var(--font-color))
+  }
+
+  .stepper-container {
+    margin: 3rem 0;
+    position: relative;
+
+    .step {
+      @include mixin.get-step-num(3);
+      background-color: var(--main-background-color);
+
+      .circle {
+        @include mixin.circle-setting(24px, #AFB1BD, var(--circle-bgColor), #AFB1BD, 12px);
+        margin-right: 8px;
+      }
+
+      .progress-label {
+        font-size: 1rem;
+        color: #AFB1BD;
+      }
+
+      .progress {
+        z-index: -1;
+        position: absolute;
+        height: 2px;
+        background-color: #AFB1BD;
+        top: 50%;
+
+        &.progress-left {
+          left: 0;
+          right: 50%;
+        }
+
+        &.progress-right {
+          left: 50%;
+          right: 0;
+        }
+      }
+
+      &.active,
+      &.done {
+        .circle {
+          @include mixin.circle-setting(24px, #ffffff, var(--active-circle-bgColor), var(--active-circle-bgColor), 12px);
+        }
+
+        .progress-label {
+          color: var(--font-color);
+        }
+
+        .progress {
+          background-color: var(--font-color);
+          border: 0.5px solid var(--font-color);
+        }
+      }
+
+      &.done {
+        .circle::after {
+          content: '';
+          display: inline-block;
+          background-image: url('../../public/image/Vector@2x.png');
+          background-repeat: no-repeat;
+          background-size: 16px;
+          background-position: center;
+          width: 16px;
+          height: 16px;
+        }
+      }
+    }
+  }
+}

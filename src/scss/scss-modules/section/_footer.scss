@@ -1,0 +1,60 @@
+@use '../mixin';
+@use '../var';
+
+footer {
+  margin-top: 120px;
+  padding: 4rem 0;
+  width: 100%;
+  background-color: var(--footer-bgColor);
+
+  .footer-container {
+    .logo {
+      width: 170px;
+
+      .logo-img {
+        content: var(--logo-img);
+        width: 100%;
+      }
+    }
+
+    .info {
+      width: 75%;
+
+      h5 {
+        @include mixin.font-setting(1.5rem, 700, var(--font-color));
+        margin-bottom: 1.5rem;
+      }
+
+      a,
+      p {
+        @include mixin.font-setting(1rem, 400, var(--footer-font-color));
+      }
+
+      .icons {
+        .icon {
+          display: inline-block;
+          width: 24px;
+          height: 24px;
+          margin: 0.5rem 1rem 0 0;
+          overflow: hidden;
+
+          .icon-img {
+            width: 100%;
+          }
+        }
+
+        .facebook-img {
+          content: var(--facebook-icon);
+        }
+
+        .instagram-img {
+          content: var(--instagram-icon);
+        }
+
+        .whatsapp-img {
+          content: var(--whatsapp-icon);
+        }
+      }
+    }
+  }
+}

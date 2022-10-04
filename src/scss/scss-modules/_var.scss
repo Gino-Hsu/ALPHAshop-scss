@@ -1,0 +1,65 @@
+:root {
+  --main-background-color: #ffffff;
+  --font-color: #2a2a2a;
+  --logo-img: url("/public/image/Logo@2x.png");
+  --search-img: url("/public/image/icon-search@2x.png");
+  --shop-img: url("/public/image/icon-shop@2x.png");
+  --switchMode-img: url("/public/image/icon-toDark@2x.png");
+  --circle-bgColor: #ffffff;
+  --active-circle-bgColor: #2a2a2a;
+  --form-font-color: #808080;
+  --form-items-color: #4a4a4a;
+  --form-placeholder-font-color: #999999;
+  --form-radio-border-color: #f0f0f5;
+  --form-radio-title-color: #000000;
+  --form-radio-font-color: #000000;
+  --form-radioInput-border-color: #222222;
+  --form-radioInput-background-color: #ffffff;
+  --form-radioInput-uncheck-width: 1px;
+  --form--radioInput-checked-width: 6px;
+  --divider-color: #e6e6eb;
+  --cart-border-color: #f0f0f5;
+  --cart-bgColor: #ffffff;
+  --cart-btn-bgColor: #f0f0f5;
+  --cart-btn-fontColor: #000000;
+  --footer-bgColor: #e5e5e5;
+  --footer-font-color: #808080;
+  --facebook-icon: url("/public/image/facebook@2x.png");
+  --instagram-icon: url("/public/image/instagram@2x.png");
+  --whatsapp-icon: url("/public/image/whatsapp@2x.png");
+  --hamburger-image: url("/public/image/hamburger@2x.png");
+  --menu-border-color: rgba(42, 42, 42, 0.1);
+}
+
+[data-theme="dark"] {
+  --main-background-color: #121212;
+  --font-color: #ffffff;
+  --logo-img: url("/public/image/Logo-dark@2x.png");
+  --search-img: url("/public/image/icon-search-dark@2x.png");
+  --shop-img: url("/public/image/icon-shop-dark@2x.png");
+  --switchMode-img: url("/public/image/icon-toLight@2x.png");
+  --circle-bgColor: #121212;
+  --active-circle-bgColor: #333333;
+  --form-font-color: rgba(255, 255, 255, 0.4);
+  --form-items-color: #5e5e5e;
+  --form-placeholder-font-color: rgba(255, 255, 255, 0.3);
+  --form-radio-border-color: #5e5e5e;
+  --form-radio-title-color: #ffffff;
+  --form-radio-font-color: rgba(255, 255, 255, 0.4);
+  --form-radioInput-border-color: #333333;
+  --form-radioInput-background-color: #FFFFFF;
+  --form-radioInput-uncheck-width: 12px;
+  --form--radioInput-checked-width: 6px;
+  --divider-color: rgba(255, 255, 255, 0.2);
+  --cart-border-color: rgba(255, 255, 255, 0.2);
+  --cart-bgColor: #383838;
+  --cart-btn-bgColor: #808080;
+  --cart-btn-fontColor: #333333;
+  --footer-bgColor: #333333;
+  --footer-font-color: rgba(255, 255, 255, 0.6);
+  --facebook-icon: url("/public/image/facebook-dark@2x.png");
+  --instagram-icon: url("/public/image/instagram-dark@2x.png");
+  --whatsapp-icon: url("/public/image/whatsapp-dark@2x.png");
+  --hamburger-image: url("/public/image/hamburger-dark@2x.png");
+  --menu-border-color: rgba(109, 109, 109, 0.4);
+}
